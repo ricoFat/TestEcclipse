@@ -8,7 +8,6 @@ public  class Table {
 	private int nombreEtudiant;
 	private double tabNotes[];
 	private String tabNom[];
-	//private double moyenne;
 	private double totalNotes ;
 	private double noteMoinsEleve;
 	private double notePlusEleve;
@@ -19,7 +18,6 @@ public  class Table {
 	
 	public Table (){
 		nombreEtudiant = 0;
-		//moyenne = 0;
 		totalNotes = 0;
 		noteMoinsEleve = 0;
 		notePlusEleve = 0;
@@ -80,7 +78,6 @@ public  class Table {
 		}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		Table classe = new Table();
 		classe.lireNombreEtudiant();
