@@ -1,10 +1,12 @@
 package uqam.note;
 
+import java.awt.HeadlessException;
+
 import javax.swing.JOptionPane;
 
 public  class Table {
   
-	 // declararion des variables 
+ // declararion des variables 
 	private int nombreEtudiant;
 	private double tabNotes[];
 	private String tabNom[];
@@ -27,8 +29,18 @@ public  class Table {
 	}
 	
 	public void lireNombreEtudiant(){
-	nombreEtudiant = Integer.parseInt(JOptionPane.showInputDialog(" Entrez le nombre " + 
-	                                         "d'étudiants inscrit au cours: "));
+	try {
+		nombreEtudiant = Integer.parseInt(JOptionPane.showInputDialog(" Entrez le nombre " + 
+		                                         "d'étudiants inscrit au cours: "));
+	} catch (NumberFormatException e) {
+		// TODO Auto-generated catch block
+		System.out.println("Erreur d'entrée ");
+		e.printStackTrace();
+	} catch (HeadlessException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
 	tabNotes = new double [nombreEtudiant];
 	tabNom = new String [nombreEtudiant];
 		
@@ -37,9 +49,17 @@ public  class Table {
 	public void lireNotes() {
 		
 		for(int i = 0; i < tabNotes.length ; i++){
-			 tabNom [i]= JOptionPane.showInputDialog("Entrez le nom de l'étudiant "+ (i+1)+ ": ");
-			 tabNotes [i]= Double.parseDouble(JOptionPane.showInputDialog("Entrez la note de " + 
-			                       tabNom[i] + ": "));
+			 try {
+				tabNom [i]= JOptionPane.showInputDialog("Entrez le nom de l'étudiant "+ (i+1)+ ": ");
+				tabNotes [i]= Double.parseDouble(JOptionPane.showInputDialog("Entrez la note de " + 
+				                       tabNom[i] + ": "));
+			} catch (HeadlessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			 totalNotes = totalNotes + tabNotes[i];
 		}
 	}
